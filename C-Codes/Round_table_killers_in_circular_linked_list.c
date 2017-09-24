@@ -16,11 +16,15 @@ struct node
 	LINK next;
 }
 
-typedef struct
+struct list;
+typedef struct list LIST;
+struct list
 {
 	LINK head;
 	int size;
-}LIST;
+}
+
+
 
 //A function to create a circular linked list
 //Define a global LINK for pointing to the last node
@@ -63,17 +67,30 @@ LIST insertElement(int person, LIST ls)
 
 int main()
 {
-	int n, x, k;
+	int n, x, k, j, a;
 	//Total no. of persons
-	printf("Input your n, x, k values:")
+	printf("Input your n, x, k values:");
 	scanf("%d %x %f", &n, &x, &k);
 	LIST my_list = circularList(n);
 	//killer_pointer
 	LINK killer = my_list.head;
 	int i;
-	for(a = 1; a<=x;a++)
+	for(a = 2; a<=x;a++)
 		killer = killer -> next;
+	i = killer -> person;
 	
 	while(my_list.size > i%k)
 	{
+		for(j = 1;j<=(i%k);j++)
+		{
+			killer -> next = killer -> next -> next;
+			//Write a line to release the memory
+			my_list.size--;
+		}
+		killer = killer -> next;
+		i = killer -> person;
+	}
+	printf("%d", i);
+	return 0;
+}
 		
