@@ -6,6 +6,7 @@
 */
 
 #include <stdio.h>
+#include <stdlib.h>
 
 struct node;
 typedef struct node NODE;
@@ -23,17 +24,17 @@ typedef struct
 }LIST;
 
 //Define a global LINK for pointing to the last node
-LINK last = NULL;
+LINK last = NULL;											//last node in circular??
 
 LIST circularList(int size);
 LIST insertElement(int person, LIST ls);
 
 int main()
 {
-	int n, x, k, j, a;
+	int n, x, k, j, a;										//what are j, a 
 	//Total no. of persons
-	printf("Input your n, x, k values:");
-	scanf("%d %x %f", &n, &x, &k);
+	printf("Input your n, x, k values:");					
+	scanf("%d %x %f", &n, &x, &k);							//why x and f 
 	LIST my_list = circularList(n);
 	//killer_pointer
 	LINK killer = my_list.head;
@@ -42,7 +43,7 @@ int main()
 		killer = killer -> next;
 	i = killer -> person;
 	
-	while(my_list.size > i%k)
+	while(my_list.size > 1)
 	{
 		for(j = 1;j<=(i%k);j++)
 		{
@@ -65,7 +66,7 @@ LIST circularList(int size)
 	ls.head = NULL;
 	int i;
 	for(i = 1;i<=size;i++)
-		insertElement(i, ls);
+		ls = insertElement(i, ls);
 	return ls;
 }
 
@@ -91,5 +92,6 @@ LIST insertElement(int person, LIST ls)
 		//last will now point to new_node which will be the last node;
 		last = new_node;
 	}
+	return ls;
 }
 		
