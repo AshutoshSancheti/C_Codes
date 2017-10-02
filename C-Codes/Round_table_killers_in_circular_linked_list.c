@@ -29,13 +29,15 @@ LINK last = NULL;											//last node in circular??
 LIST circularList(int size);
 LIST insertElement(int person, LIST ls);
 
+LIST my_list;
+
 int main()
 {
 	int n, x, k, j, a;										//what are j, a 
 	//Total no. of persons
 	printf("Input your n, x, k values:");					
 	scanf("%d %x %f", &n, &x, &k);							//why x and f 
-	LIST my_list = circularList(n);
+	my_list = circularList(n);
 	//killer_pointer
 	LINK killer = my_list.head;
 	int i;
