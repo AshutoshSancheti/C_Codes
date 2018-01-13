@@ -60,6 +60,8 @@ void search_book(char *title, char *author, books & b1);
 
 int main()
 {
+	books book1("Ashu", "auth", 100, "pub", 10);
+	/*
 	books book[10];
 	int cost = 100;
 	int sto = 100;
@@ -67,6 +69,7 @@ int main()
 	char str2[] = "authorX";
 	char str3[] = "publishX";
 	int i;
+	
 	for(i = 0;i<10;i++)
 	{
 		int j = i + 1;
@@ -76,32 +79,40 @@ int main()
 		book[i](str1, str2, cost, str3, sto);
 		cost +=100;
 		sto -=10;
-	}
+	}*/
 	char in_title[10], in_author[10];
 	cout << "Please enter the title of the book: ";
 	cin >> in_title;
 	cout << "Please enter the author of the book: ";	
 	cin >> in_author;
 	
-	search_book(char *title, char *author,books & b1);
+	search_book(in_title,in_author,book1);
 	
 	return 0;
 }
 
-void search_book(char *title, char *author,books & b1)
+void search_book(char* title, char* author_name,books & b1)
 {
 	int i;
 	int flag = 0;
+	/*
 	for(i = 0;i < 10;i++)
 	{
-		if((!strcmp(title, b1.name)) && (!strcmp(author, b1.author)))
+		if((!strcmp(title, b1[i].name)) && (!strcmp(author_name, b1[i].author)))
+		{
+			flag = 1;
+			b1[i].display_details();
+			b1[i].no_of_copies();
+			break;
+		}
+	}
+	*/
+	if((!strcmp(title, b1.name)) && (!strcmp(author_name, b1.author)))
 		{
 			flag = 1;
 			b1.display_details();
 			b1.no_of_copies();
-			break;
 		}
-	}
 	if(flag == 0)
 		cout << "Book not available" << endl;
 }
